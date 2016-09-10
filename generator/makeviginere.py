@@ -1,5 +1,3 @@
-import binascii
-
 def prompt(phrase):
     filename = input(phrase)
     if len(filename) < 1:
