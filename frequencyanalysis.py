@@ -67,6 +67,41 @@ def getCount(array):
             count[hex(num)] = float(1)
     return count
 
+def findGCD(nGrams):
+    #takes a list of tuples of nGrams and their counts and returns the smallest GCD that is not prime
+    #if one exists
+    #this is an O(n^2) operation as each nGram is being compared against all other nGrams
+    
+    #There is a gotcha when usinf the GCD is that some combinations of nGrams are going to be red herrings and therefore this method is hard to automate
+    #as it takes eyeballing and guessing
+    commonDivisors =[1]
+    for i in range(len(nGrams)):
+        for j in range(i+1, len(nGrams)):
+            divisor = gcd(nGrams[i][1], nGrams[j][1])
+            if divisor > 1:
+                commonDivisors.append(divisor)
+
+    return commonDivisors
+            
+
+def gcd(a, b):
+    #Algorithm taken from https://en.wikipedia.org/wiki/Greatest_common_divisor
+    # the gcd is 2^d * a
+    d = 0
+    while a % 2 == 0 and b % 2 == 0:
+        a /= 2
+        b /= 2
+        d += 1
+    while a != b:
+        if a%2 == 0:
+            a /= 2
+        elif b%2 == 0:
+            b /= 2
+        elif a > b:
+            a = (a-b)/2
+        else:
+            b = (b-a)/2
+    return (2**d)*a
 
 if __name__ == "__main__":
     #Examples of how to use some of the functions
@@ -77,4 +112,6 @@ if __name__ == "__main__":
     count = getCount(byteArray)
     threeGrams = countNGrams(byteArray,3)
 
-    print(findXMostNGrams(threeGrams, 20))
+    twentyNGrams = findXMostNGrams(threeGrams, 20)
+
+    print(findGCD(twentyNGrams))
