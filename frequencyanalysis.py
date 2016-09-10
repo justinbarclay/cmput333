@@ -1,10 +1,12 @@
 def prompt(phrase):
+    # grab a file handle based on user input
     filename = input(phrase)
     if len(filename) < 1:
         return ""
     return open(filename)
 
 def printFreq(freq, total):
+    # given a dictionary and the length of the source of the dictionary, print out the freuncy of all items in the dictionary
     for key, value in freq.items():
         print(str(key) + ": " + str(value/float(total)))
 
@@ -17,6 +19,7 @@ def genArray(fileHandle):
     return byteArray
 
 def findXMostNGrams(nGrams, x):
+    #iterates over a dictionary and returns the x most frequent items in the dictionary as a list of tuples
     if x > len(nGrams):
         return "X is too big"
 
@@ -31,6 +34,7 @@ def findXMostNGrams(nGrams, x):
     return xHighest
 
 def countNGrams(byteArray, size):
+    # Given a byte array, it returns a dict of a count of all unique nGrams of a specific size in the array
     start = 0
     end = size
     length =len(byteArray)
@@ -54,6 +58,7 @@ def countNGrams(byteArray, size):
     return nGrams
 
 def getCount(array):
+    # given an array, returns a dict of a count of all unique items in the array 
     count = {}
     for num in array:
         if hex(num) in count.keys():
@@ -64,13 +69,12 @@ def getCount(array):
 
 
 if __name__ == "__main__":
+    #Examples of how to use some of the functions
     encrypted = open("./cipher_text/ciphertext1", "rb")
-    count = {}
-    totalBytes = 0
+
 
     byteArray = genArray(encrypted)
     count = getCount(byteArray)
-#    printFreq(count, len(byteArray))
     threeGrams = countNGrams(byteArray,3)
 
     print(findXMostNGrams(threeGrams, 20))
