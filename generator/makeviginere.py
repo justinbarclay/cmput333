@@ -7,7 +7,7 @@ def prompt(phrase):
 def splitHex(char):
     toHex = ord(char)
     upperHalf = toHex >> 4
-    lowerHalf = toHex & 3
+    lowerHalf = toHex & 15
     return upperHalf, lowerHalf
 
 def findHexBits(plainChar, keyChar):
