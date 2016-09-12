@@ -41,7 +41,8 @@ def vigEncryptText(plaintext, key):
     encrypted = []
     keyLen = len(key)
     for index,char in enumerate(plaintext):
-        encrypted.append(findHexBits(char, key[index%keyLen]))
+        if ord(char) > 31 and ord(char) < 127:
+            encrypted.append(findHexBits(char, key[index%keyLen]))
 
     return encrypted
     
