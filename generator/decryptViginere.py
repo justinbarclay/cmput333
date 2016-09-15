@@ -50,12 +50,10 @@ def vigEncryptText(plaintext, key):
 
 def vigDecryptText(cipherText, key):
     decrypted = []
-    keyLen= len(key)
-    print(len(cipherText))
+    keyLen = len(key)
     for index, char in enumerate(cipherText):
-        print(key[index%keyLen])
-        decrypted.append(findPlain(char, key[index%keyLen]))
-    return decrypted 
+        decrypted.append(findPlain(char, key[index % keyLen]))
+    return decrypted
 
 if __name__ == "__main__":
 
@@ -69,10 +67,14 @@ if __name__ == "__main__":
         print("\nKey file or plaintext file does not exist\n")
     else:
         mainList = []
-        key = keyFile.readlines()[0]
+        keys = keyFile.readlines()
         for line in plaintextFile:
             mainList += line
-        
-        encryptedText = vigDecryptText(mainList, key)
-        encrypted = open("decrypted.txt", "wb")
-        encrypted.write(bytes(encryptedText))
+        i=1
+        for key in keys:
+            name = "decrypted" + str(i) + ".txt"
+            encryptedText = vigDecryptText(mainList, key)
+            encrypted = open(name, "wb")
+            encrypted.write(bytes(encryptedText))
+            encrypted.close()
+            i += 1
