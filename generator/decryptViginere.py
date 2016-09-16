@@ -1,3 +1,5 @@
+import sys
+
 def prompt(phrase):
     filename = input(phrase)
     if len(filename) < 1:
@@ -36,42 +38,46 @@ def findPlain(cipher, key):
     ]
     kh, kl = splitHex(key)
     ch, cl = splitHex(cipher)
-    
+
     return ((findMatch(hexMap, ch, kl) << 4) + findMatch(hexMap, cl, kh))
 
-def vigEncryptText(plaintext, key):
-    encrypted = []
-    keyLen = len(key)
-    for index,char in enumerate(plaintext):
-        if ord(char) > 31 and ord(char) < 127:
-            encrypted.append(findHexBits(char, key[index%keyLen]))
-
-    return encrypted
 
 def vigDecryptText(cipherText, key):
     decrypted = []
     keyLen = len(key)
+    # print(keyLen)
     for index, char in enumerate(cipherText):
         decrypted.append(findPlain(char, key[index % keyLen]))
     return decrypted
 
+def chunks(l, n):
+    n = max(1, n)
+    return (l[i:i+n] for i in range(0, len(l), n))
+
 if __name__ == "__main__":
-
-    keyPhrase = "What is the name of the key file? (please note, only the first line will be read for the key) "
-    keyFile = prompt(keyPhrase)
-
-    plaintextPhrase = "What is the name of the file you would like to decrypt? "
-    plaintextFile = prompt(plaintextPhrase)
+    if len(sys.argv) == 3: 
+        keyFile = open(sys.argv[1], "rb")
+        plaintextFile = open(sys.argv[2], "rb")
+    else:
+        keyPhrase = "What is the name of the key file? (please note, only the first line will be read for the key) "
+        keyFile = prompt(keyPhrase)
+        plaintextPhrase = "What is the name of the file you would like to decrypt? "
+        plaintextFile = prompt(plaintextPhrase)
 
     if type(keyFile) == str and type(plaintextFile) == str and (len(keyFile) < 1 or len(plaintextFile) < 1):
         print("\nKey file or plaintext file does not exist\n")
     else:
         mainList = []
-        keys = keyFile.readlines()
+        keys = []
+        for line in keyFile:
+            keys += line
+        splitKeys = chunks(keys, 7)
+        
         for line in plaintextFile:
             mainList += line
         i=1
-        for key in keys:
+        for key in splitKeys:
+            print(key)
             name = "decrypted" + str(i) + ".txt"
             encryptedText = vigDecryptText(mainList, key)
             encrypted = open(name, "wb")
