@@ -55,16 +55,20 @@ def chunks(l, n):
     return (l[i:i+n] for i in range(0, len(l), n))
 
 if __name__ == "__main__":
+    # The user may pass in a keyfile and ciphertext file throught the command line
+    # as decryptViginere keyfile ciphertext
+    # if these arguments aren't passed in, it will then prompt the user for
+    # the names
     if len(sys.argv) == 3: 
         keyFile = open(sys.argv[1], "rb")
-        plaintextFile = open(sys.argv[2], "rb")
+        cipherTextFile = open(sys.argv[2], "rb")
     else:
         keyPhrase = "What is the name of the key file? (please note, only the first line will be read for the key) "
         keyFile = prompt(keyPhrase)
-        plaintextPhrase = "What is the name of the file you would like to decrypt? "
-        plaintextFile = prompt(plaintextPhrase)
+        cipherTextPhrase = "What is the name of the file you would like to decrypt? "
+        cipherTextFile = prompt(cipherTextPhrase)
 
-    if type(keyFile) == str and type(plaintextFile) == str and (len(keyFile) < 1 or len(plaintextFile) < 1):
+    if type(keyFile) == str and type(cipherTextFile) == str and (len(keyFile) < 1 or len(cipherTextFile) < 1):
         print("\nKey file or plaintext file does not exist\n")
     else:
         mainList = []
@@ -73,7 +77,7 @@ if __name__ == "__main__":
             keys += line
         splitKeys = chunks(keys, 7)
         
-        for line in plaintextFile:
+        for line in cipherTextFile:
             mainList += line
         i=1
         for key in splitKeys:
