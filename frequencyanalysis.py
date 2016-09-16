@@ -1,3 +1,4 @@
+
 def prompt(phrase):
     # grab a file handle based on user input
     filename = input(phrase)
@@ -83,6 +84,7 @@ def getCount(array, split=None):
 
 
 def findGCD(nGrams):
+    #This is the wrong thought process for finding length of key using nGrams.
     #takes a list of tuples of nGrams and their counts and returns the smallest GCD that is not prime
     #if one exists
     #this is an O(n^2) operation as each nGram is being compared against all other nGrams
@@ -135,8 +137,11 @@ def ioc(count, phi):
     n = total_char * (total_char - 1)
     return (total) / n
 
-def splitHex(char):
-    toHex = ord(char)
+def splitHex(num):
+    if type(num) is str:
+        toHex = ord(num)
+    else:
+        toHex = num
     upperHalf = toHex >> 4
     lowerHalf = toHex & 15
     return upperHalf, lowerHalf
@@ -173,6 +178,13 @@ def findHexBits(plainChar, keyChar):
 def findMatch(byteArray, byte):
     return byteArray.index(byte)
 
+def generateAllKeys(keys):
+    collection = []
+    for key in keys[0].get():
+        permutationofKey = []
+        
+        
+
 def findKey(cipher, plain):
     hexMap = [
         [0xf, 0x7, 0x6, 0x4, 0x5, 0x1, 0x0, 0x2, 0x3, 0xb, 0xa, 0x8, 0x9, 0xd, 0xc, 0xe],
@@ -194,8 +206,7 @@ def findKey(cipher, plain):
     ]
     ph, pl = splitHex(plain)
     ch, cl = splitHex(cipher)
-
-    return ((findMatch(hexMap[ph], ch) << 4) + findMatch(hexMap[pl], cl))
+    return ((findMatch(hexMap[pl], cl) << 4) + findMatch(hexMap[ph], ch))
 
 def findKeys(common, letters):
     # The idea behind this function is to assume that to test the most
@@ -210,26 +221,73 @@ def findKeys(common, letters):
     for letter in common:
         for cipher in letters:
             key = findKey(chr(int(cipher[0], 16)), letter)
-            if key in main:
-                main[key] += 1
-            else:
-                main[key] = 1
+            
+            if key < 128:
+                if key in main:
+                    main[key] += 1
+                else:
+                    main[key] = 1
     return main
 
 def findMostLikelyKeys(keys):
+    # Given a list of dictionary objects, it returns a list of ints that respresent
+    # the most frequent keys in each dictionary
     bestMatch = []
-
+    print(keys)
     for possibleKey in keys:
         bestMatch.append(max(possibleKey, key=possibleKey.get))
 
     return bestMatch
+
+
+def cartesian(lists):
+    # Provides the cartesian product of a list of lists
+    if lists == []:
+        return [()]
+    return [x + (y,) for x in cartesian(lists[:-1]) for y in lists[-1]]
+
+def findSequence(array, sequence):
+    # Finds all index of a subsequence in an array
+    foundIndexes = []
+    for i in range(len(array)):
+        if array[i] == sequence[0] and equal(array[i: i + len(sequence)], sequence):
+            foundIndexes.append(i)
+    return foundIndexes
+
+def equal(first, second):
+    # simple equality checker
+    print(first)
+    print(second)
+    if len(first) != len(second):
+        return False
+    for i in range(len(first)):
+        if first[i] != second[i]:
+            return False
+    print(True)
+    return True
+
+def getListOfKeys(keys):
+    # Takes in a list of dictionaries and returns a list of list of the keys
+    # of the dictionaries
+    listsOfKeys = []
+    for dictionary in keys:
+        listsOfKeys.append(list(dictionary.keys()))
+    return listsOfKeys
+
+def convertHexStringToInt(hexString):
+    #Convert a hex string to int
+    intList = []
+    splitString = hexString.split("/")[1:]
+    for item in splitString:
+        intList.append(int(item, 16))
+
+    return intList
 
 if __name__ == "__main__":
     #Examples of how to use some of the functions
     encrypted = open("cipher_text/ciphertext1", "rb")
 
     byteArray = genArray(encrypted)
-    count = getCount(byteArray, 5)
 
     for i in range(1, 20):
         count = getCount(byteArray, i)
@@ -246,7 +304,8 @@ if __name__ == "__main__":
     for index, array in enumerate(count):
         print(index)
 
-        most = findXMostNGrams(array, 6)
+        most = findXMostNGrams(array, 7)
+        print(most)
         keys = findKeys(common, most)
         bestKeys = {}
         for key, value in keys.items():
@@ -257,20 +316,15 @@ if __name__ == "__main__":
     print(probableKeys)
 
     mostProbableKeys = findMostLikelyKeys(probableKeys)
+    print("most probably keys: ", mostProbableKeys)
 
     keyFile = open("keys.txt", "wb")
+    # for keys in cartKeys:
+        # keys.append(255)
     keyFile.write(bytes(mostProbableKeys))
 
-    # print(findKeys(common, most))
 
-    # threeGrams = countNGrams(byteArray,3)
-
-    # twentyNGrams = findXMostNGrams(threeGrams, 20)
-
-    # print(findGCD(twentyNGrams))
-
-
-# Letter	Count	 	Letter	Frequency
+# letter	count	 	letter	frequency
 # E	21912	 	E	12.02
 # T	16587	 	T	9.10
 # A	14810	 	A	8.12
