@@ -1,0 +1,24 @@
+Part 3 Answers:
+/*********************************************************
+* Double check answers
+* review the definition of ECB, CBC, CFB, and OFB modes of operation from the textbook.
+*
+* How big is a block?
+*
+*
+**********************************************************/
+
+
+file size of plaintext: 80 bytes, 8 blocks 
+
+*Comparison for enc mode*
+file size of cipherecb.enc: 88 bytes, 8 blocks
+i) The size of cipherecb.enc increases by 8 bytes as the key is use to encrypt a partial block, and that information is put into the resulting file (cipherecb.enc)
+
+ii) The pattern repeats in the cipher text as it does in the plaintext because ecb encrypts independently encrypts each __ bit block of the plaintext. Thus the pattern will repeat exactly 
+
+*Comparison for cbc mode*
+file size of ciphercbc.enc: 88 bytes, 8 blocks 
+i) The size of ciphercbc.enc increases
+
+ii) No discernable pattern
