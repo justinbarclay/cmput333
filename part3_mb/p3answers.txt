@@ -9,16 +9,39 @@ Part 3 Answers:
 **********************************************************/
 
 
-file size of plaintext: 80 bytes, 8 blocks 
+file size of plaintext: 80 bytes
+password used: "01234567"
 
-*Comparison for enc mode*
-file size of cipherecb.enc: 88 bytes, 8 blocks
+*Comparison for ecb mode*
+file size of cipherecb.enc: 88 bytes
 i) The size of cipherecb.enc increases by 8 bytes as the key is use to encrypt a partial block, and that information is put into the resulting file (cipherecb.enc)
 
-ii) The pattern repeats in the cipher text as it does in the plaintext because ecb encrypts independently encrypts each __ bit block of the plaintext. Thus the pattern will repeat exactly 
+ii) The pattern repeats in the cipher text as it does in the plaintext because ecb encrypts independently encrypts each bit block of the plaintext. Therefore, there will be 1 block that is incompletely filled by the plaintext that is padded out to entirely fill the block. This results in the ciphertext becoming longer than the plaintext by 8 bytes
 
 *Comparison for cbc mode*
-file size of ciphercbc.enc: 88 bytes, 8 blocks 
-i) The size of ciphercbc.enc increases
+file size of ciphercbc.enc: 88 bytes
+i) The size of ciphercbc.enc increases by 8 bytes as a partial block must be padded out to the length of the full block for the XOR operation and encryption to function according to the algorithm
 
-ii) No discernable pattern
+ii) No discernable pattern occurs as the initialization vector (password) is first XORed with the cipher text which will help to obfuscate any pattern in the text, as a cleartext block is continually XORed with different ciphertexts. No cipher text XORed with a plaintext block will ever be the same, so no pattern can occur
+
+*Comparison for cfb mode*
+file size of ciphercfb.enc: 80 bytes
+i.) The size of ciphercfb.enc does not change because no padding of the plaintext needs to occur in the final partial block. The ciphertext bits that do not have a corresponding bit in the plaintext to be XORed are simply not used
+ii.) No pattern occurs as ciphertext used in the XOR operation performed at each stage is unique. Therefore it will remove any pattern that is present in the plaintext
+
+*Comparison for ofb mode*
+file size of cipherofb.enc: 80 bytes
+i.) The size of cipherecb.enc does not change, as no padding of the plaintext needs to occur in the final (partial) block. The ciphertext bits that do not have a corresponding plaintext bit to be XORed with are simply discarded
+ii.) No patter occurs as the ciphertext used in the XOR operation is always unique. Therefore, no patter can be carried forward over more than 1 XOR operation, rendering it impossible for there to be a pattern
+
+*Efect of modification & decryption*
+*On ECB*
+    The file remained mostly intact, with the 3rd set of "01234567" (3rd 64 bit block) being damaged (meaning decrypts into gibberish). The impact of the error was that the 64 bit block in which the 19th byte was modified becomes undecryptable, but the other blocks are uncompromised because they are encrypted separately.
+    
+*On CBC*
+    The file remains mostly intact with the 3rd block, and 1st byte of the 4th 64bit block being damaged (meaning decrypts into gibberish). The impact of the error was that the other blocks are uncompromised as if a block of plaintext is corrupt but subsequent plaintext blocks are correct each subsequent block is XORed with the ciphertext of the previous block, and not the plaintext. The previous block does not need to be decrypted before using it as the IV for the decryption of the subsequent blocks
+*On CFB*
+    The file is completely compromised, meaning it is not decrypted at all. This is because when XORing the ciphertext, with the result of block cipher, it will return altogether different value. This value is then fed into the next block decryption, and causes a cascading effect of incorrect decryptions.
+
+*On OCB*
+    The file is completely compromised, meaning it is not decrypted at all. This is because when XORing the ciphertext with the result of the block cipher (initialization vector) in the first round of decryption, produces an incorrect result that is fed into the next round of decryption, and causes the error to propogate through the rest of the data.
