@@ -304,12 +304,13 @@ def convertHeadersFiletoHex(headers):
     return hexArray
 if __name__ == "__main__":
     # Examples of how to use some of the functions
-    encrypted = open("cipher_text/ciphertext2", "rb")
-    headers = open("jpegHeaders.txt")
+    encrypted = open("ciphertext2", "rb")
+    fileSignatures = "jpegHeaders.txt"
+    headers = open(fileSignatures)
     byteArray = genArray(encrypted)
     hexHeaders = convertHeadersFiletoHex(headers)
-    
-    print(len(byteArray))
+
+    ## Part 1
     ## This is code for going through a long range of files and guessing a partial
     ## key
     # allKeys = []
@@ -346,6 +347,7 @@ if __name__ == "__main__":
     # for keys in allKeys:
     #     print(keys)
 
+    # Part 2 guessing
     ## This is me playing around and slowly decrypting the key from the encrypted text
     info = ["DD", "78", "E3", "AA", "D5", "8F", "B3", "C6", "E0", "B1", "B9", "82", "9F", "B3", "F5"]
     guess = [64, 88, 105, 97, 111, 109, 105, 32, 82, 101, 100, 109, 105, 32, 51]

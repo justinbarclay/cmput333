@@ -74,7 +74,8 @@ if __name__ == "__main__":
         keys = []
         for line in keyFile:
             keys += line
-        splitKeys = chunks(keys, 49)
+        keyLength = 7
+        splitKeys = chunks(keys, keyLength)
         
         for line in cipherTextFile:
             mainList += line

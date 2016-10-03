@@ -286,18 +286,23 @@ def convertHexStringToInt(hexString):
     return intList
 
 if __name__ == "__main__":
-    #Examples of how to use some of the functions
-    encrypted = open("cipher_text/ciphertext1", "rb")
-    headers = open("headers.txt")
-    byteArray = genArray(encrypted)
 
-    for line in headers:
-        for index, byte in enumerate(line):
-            char = chr(findKey(byteArray[index], byte))
-            print(hex(ord(char)))
-            print(char)
+    fileName = "cipher_text/ciphertext1"
+    encrypted = open(fileName, "rb")
+    byteArray = genArray(encrypted)
     
-    for i in range(1, 400):
+    # headers = open("headers.txt")
+    # for line in headers:
+    #     for index, byte in enumerate(line):
+    #         char = chr(findKey(byteArray[index], byte))
+    #         print(hex(ord(char)))
+    #         print(char)
+    
+    ## Part 1
+    ## Enter filename here
+    # Set max key size here
+    maxKeyLength = 20
+    for i in range(1, maxKeyLength):
         # Spluts the byte array into i sub arrays
         count = getCount(byteArray, i)
         
@@ -306,30 +311,33 @@ if __name__ == "__main__":
         for j in count:
             iocs.append(ioc(j, 0.0667))
         if (sum(iocs)/len(count)) > 0.06:
+            # Highlights probable keys
             print("*****")
         print(str(i) + ": " + str(sum(iocs) / len(count)))
 
-    count = getCount(byteArray, 7)
-    common = ["e", "t", "a", "o", "i", "n", "s", "r"]
+    ## Part 2
+    # guessedKeyLength = 7
+    # count = getCount(byteArray, guessedKeyLength)
+    # common = ["e", "t", "a", "o", "i", "n", "s", "r"]
 
-    probableKeys = []
-    for index, array in enumerate(count):
-        print(index)
+    # probableKeys = []
+    # for index, array in enumerate(count):
+    #     print(index)
 
-        most = findXMostNGrams(array, 7)
-        print(most)
-        keys = findKeys(common, most)
-        bestKeys = {}
-        for key, value in keys.items():
-            if value > 1:
-                bestKeys[key] = value
-                print(str(key) + ": " + str(value))
-        probableKeys.append(bestKeys)
+    #     most = findXMostNGrams(array, 7)
+    #     print(most)
+    #     keys = findKeys(common, most)
+    #     bestKeys = {}
+    #     for key, value in keys.items():
+    #         if value > 1:
+    #             bestKeys[key] = value
+    #             print(str(key) + ": " + str(value))
+    #     probableKeys.append(bestKeys)
 
-    mostProbableKeys = findMostLikelyKeys(probableKeys)
-    print("most probably keys: ", mostProbableKeys)
-    keyFile = open("keys.txt", "wb")
-    keyFile.write(bytes(mostProbableKeys))
+    # mostProbableKeys = findMostLikelyKeys(probableKeys)
+    # print("most probably keys: ", mostProbableKeys)
+    # keyFile = open("keys.txt", "wb")
+    # keyFile.write(bytes(mostProbableKeys))
 # letter	count	 	letter	frequency
 # E	21912	 	E	12.02
 # T	16587	 	T	9.10
