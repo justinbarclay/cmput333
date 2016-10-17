@@ -1,0 +1,13 @@
+Know definitions:
+- Non repudiation
+- confidentiality
+- integrity
+
+Simple substitution ciphers
+Randomness, what is it? what are the problems with Pseudo
+Hashes -> passwords, salt
+Hashes -> Lamport
+Hashes -> Properties, desirable properyie
+Intro symmetric encryption
+
+All from first module material, to the extent that we covered it.
