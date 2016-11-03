@@ -1,7 +1,7 @@
-* Services and Configuration * 
+* Services and Configuration *
 
 * Part 1:
-*Linux root password:* 
+*Linux root password:*
 Qni@rjeIy4NwI6nLHmo67Wy*yDUOuY4$ynyRmFoJ%6fy3q$m%TwqOTeffo*W40vh
 *Linux student password:*
 In&JRDhntDg5gnTlx7RKSxA8I4!*yey60fOyG4q7uRmRJ@8qi1g4ZHyEd3jQEaXC
@@ -16,9 +16,9 @@ bzoXuICOJBcGupZjKcySdp74pxO6Npyfv5XTQQv9x3pq7Yr75
 *NOTE:* please contact us if you use lastpass, and we can share the passwords
 with you to make life a little easier (because these are truly sadistic
 passwords) without the use of a password manager
-** Reasoning: 
+** Reasoning:
 - Passwords are randomly generated using LastPass (very reputable password
-  service) to prevent dictionary attacks and ensure integrity of random
+  service) to prevent dictionary/rainbow attacks and ensure integrity of random
   generation
 - We wanted to ensure that it was impossible to brute force a password
     + It takes 16.69 million trillion trillion trillion trillion trillion
@@ -28,8 +28,70 @@ passwords) without the use of a password manager
   and randomly generated passwords makes the use of user created passwords
   inexcuseable
 - If we were implimenting this assignment in the real world, these ports
-  would be open to online brute force/dictionary attacks (excepting the use
+  would be open to online brute force/dictionary/rainbow attacks (excepting the use
   of something like Fail2Ban), so it is a neccessity to have an extremely
-  secure password to prevent unauthorized access to the server(s).
+  secure password to prevent unauthorized access to the server(s)
 
+* Part 2
+** How did you select the passwords for the user accounts on Linux and Windows
+- Passwords are randomly generated using LastPass (very reputable password
+  service) to prevent dictionary/rainbow attacks and ensure integrity of random
+  generation
+- We wanted to ensure that it was impossible to brute force a password
+    + It takes 16.69 million trillion trillion trillion trillion trillion
+    trillion trillion centuries to exhaustively search this password space
+    (Assuming one hundred trillion guesses per second)
+- The ease of use, and proven security benefits of using a password manager
+  and randomly generated passwords makes the use of user created passwords
+  inexcuseable, as compromising a user account can give an attacker a
+  foothold to gain higher access privileges on the server 
+- If we were implimenting this assignment in the real world, these ports
+  would be open to online brute force/dictionary/rainbow attacks (excepting the use
+  of something like Fail2Ban), so it is a neccessity to have an extremely
+  secure password to prevent unauthorized access to the server(s)
+** Compare and contrast how the authentication in the web server works, ftp server, and in the tftp server
+*** Web Server:
 
+*** Ftp Server:
+- Implimented by VSFTPD, which supports virtual users with PAM (pluggable
+  authentication modules)
+    + *Linux PAM:* separates the tasks of authentication into four independent
+          management groups
+          1. _Account modules_ check that the specified account is a valid
+          authentication target under current conditions. (may include
+          conditions like account expiration, time of day, and that the user
+          has access to the requested service)
+          2. _Authentication modules_ verify the user's identity, for example
+          by requesting and checking a, in this case, password.
+          3. _Password modules_ are responsible for updating passwords, and are
+          generally coupled to modules in the authentication step. may also be used 
+          to enforce strong passwords
+          4. _Session modules_ define actions that are performed at the
+          beginning and end of sessions. A session starts after a user has
+          authenticated
+    + A virtual user is a user login which does not exist as a real login on the
+    system in /etc/passwd and /etc/shadow file. Virtual users can therefore be
+    more secure than real users, because a compromised account can only use the
+    FTP server but cannot login to system to use other services such as SSH or
+    SMTP) 
+*** Tftp Server:
+- OpenTFTP server (and TFTP in general)includes no login or access control mechanisms, and thereby provides
+  no authentication of users. 
+    + It is accessible by
+    any anonymous user. It does not provide the ability to manipulate what
+    directory the user has access to, so upon setting up a tftp connection,
+    the user only has accesss to the contents of the specified directory
+*** Compare & Contrast:
+- FTP provides the ability to authenticate, and control what users can access
+  the server contents, whereas the TFTP server only allows control of what
+  directory a user has access to
+- FTP and TFTP both provide control of what directories a user is able to access
+- FTP and TFTP both do not allow remote code execution in the form of shell access
+- FTP does allow the user to navigate directories within the space they are
+  permitted to access 
+
+* Resources:
+https://help.ubuntu.com/community/vsftpd
+http://docs.slackware.com/
+http://www.m0rd0r.eu/slackware-as-basic-tftp-server/
+https://en.wikipedia.org/wiki/Linux_PAM
