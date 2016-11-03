@@ -1,0 +1,35 @@
+* Services and Configuration * 
+
+* Part 1:
+*Linux root password:* 
+Qni@rjeIy4NwI6nLHmo67Wy*yDUOuY4$ynyRmFoJ%6fy3q$m%TwqOTeffo*W40vh
+*Linux student password:*
+In&JRDhntDg5gnTlx7RKSxA8I4!*yey60fOyG4q7uRmRJ@8qi1g4ZHyEd3jQEaXC
+*Linux professor password:*
+bzoXuICOJBcGupZjKcySdp74pxO6Npyfv5XTQQv9x3pq7Yr75
+*Windows Admin password:*
+#Are there other windows account passwords, and is windows admin the same as Linux?
+*Windows Account1 password:*
+
+*Windows Account2 password:*
+
+*NOTE:* please contact us if you use lastpass, and we can share the passwords
+with you to make life a little easier (because these are truly sadistic
+passwords) without the use of a password manager
+** Reasoning: 
+- Passwords are randomly generated using LastPass (very reputable password
+  service) to prevent dictionary attacks and ensure integrity of random
+  generation
+- We wanted to ensure that it was impossible to brute force a password
+    + It takes 16.69 million trillion trillion trillion trillion trillion
+    trillion trillion centuries to exhaustively search this password space
+    (Assuming one hundred trillion guesses per second)
+- The ease of use, and proven security benefits of using a password manager
+  and randomly generated passwords makes the use of user created passwords
+  inexcuseable
+- If we were implimenting this assignment in the real world, these ports
+  would be open to online brute force/dictionary attacks (excepting the use
+  of something like Fail2Ban), so it is a neccessity to have an extremely
+  secure password to prevent unauthorized access to the server(s).
+
+
