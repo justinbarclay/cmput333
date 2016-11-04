@@ -1,0 +1,25 @@
+#Refuse all inboud traffic default
+iptables -P INPUT DROP
+
+#Allow all incoming SSH traffic on default ssh port 22
+iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
+
+#Allow outside users to ping servers
+iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+
+#Allow 10.229.*.* to access ftp
+iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 20 -j ACCEPT
+#Block 10.229.100.96
+iptables -A INPUT -s 10.229.100.96 -p tcp --dport 20 -j REJECT
+#Block 10.229.96.*
+iptables -A INPUT -s 10.229.96.0/24 -p tcp --dport 20 -j REJECT
+#Group x+1 ?
+
+#Allow 10.229.*.* to access http
+iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 80, 8080 -j ACCEPT
+#Block 10.229.100.97
+iptables -A INPUT -s 10.229.100.97 -p tcp --dport 80, 8080 -j REJECT
+#Block 10.229.97.*
+iptables -A INPUT -s 10.229.97.0/24 -p tcp --dport 80, 8080 -j REJECT
