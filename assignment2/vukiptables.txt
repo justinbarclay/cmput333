@@ -6,25 +6,25 @@ iptables -P INPUT DROP
 
 #Allow all incoming SSH traffic on default ssh port 22
 iptables -A INPUT -p tcp --dport ssh -j ACCEPT
-iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT #might not need
 
 #Allow outside users to ping servers
 iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
-iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT #might not need
 
 #Allow 10.229.*.* to access ftp, default port 20
-iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 20 -j ACCEPT
+iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 20 -j ACCEPT #maybe should use port 21 
 #Block 10.229.100.96
 iptables -A INPUT -s 10.229.100.96 -p tcp --dport 20 -j REJECT
 #Block 10.229.96.*
 iptables -A INPUT -s 10.229.96.0/24 -p tcp --dport 20 -j REJECT
 #block group 8 (x+1)
-iptables -A INPUT -s 10.229.100.8 -p tcp --dport 20 -j REJECT
+iptables -A INPUT -s 10.229.8.0 -p tcp --dport 20 -j REJECT
 
 #outbound
 iptables -A OUTPUT -s 10.229.100.96 -p tcp --dport 20 -j REJECT
 iptables -A OUTPUT -s 10.229.96.0/24 -p tcp --dport 20 -j REJECT
-iptables -A OUTPUT -s 10.229.100.8 -p tcp --dport 20 -j REJECT
+iptables -A OUTPUT -s 10.229.8.0 -p tcp --dport 20 -j REJECT
 
 #Allow 10.229.*.* to access http on ports 80, 8080
 iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 80, 8080 -j ACCEPT
@@ -33,7 +33,7 @@ iptables -A INPUT -s 10.229.100.97 -p tcp --dport 80, 8080 -j REJECT
 #Block 10.229.97.*
 iptables -A INPUT -s 10.229.97.0/24 -p tcp --dport 80, 8080 -j REJECT
 #Block group 6 (x-1)
-iptables -A INPUT -s 10.229.100.6 -p tcp --dport 80, 8080 -j REJECT
+iptables -A INPUT -s 10.229.6.0 -p tcp --dport 80, 8080 -j REJECT
 
 #Allow 10.229.*.* to access tftp, default port 69
 iptables -A INPUT -s 10.229.0.0/16 -p udp --dport 69 -j ACCEPT
@@ -42,9 +42,9 @@ iptables -A INPUT -s 10.229.100.96 -p udp --dport 69 -j REJECT
 #Block 10.229.96.*
 iptables -A INPUT -s 10.229.96.0/24 -p udp --dport 69 -j REJECT
 #block group 9(x+2)
-iptables -A INPUT -s 10.229.100.9 -p udp --dport 69 -j REJECT
+iptables -A INPUT -s 10.229.9.0 -p udp --dport 69 -j REJECT
 
-#logging
+#logging, may have to be slightly changed, following this http://stackoverflow.com/questions/21771684/iptables-log-and-drop-in-one-rule
 iptables -N LOGGING
 iptables -A INPUT -j LOGGING
 iptables -A OUTPUT -j LOGGING
