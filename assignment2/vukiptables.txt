@@ -32,7 +32,7 @@ iptables -A INPUT -s 10.229.0.0/16 -p udp --dport 69 -j ACCEPT
 #Block 10,229.100.96
 iptables -A INPUT -s 10.229.100.96 -p udp --dport 69 -j REJECT
 #Block 10.229.96.*
-iptables -A INPUT -s 10.229.96.0/24
+iptables -A INPUT -s 10.229.96.0/24 -p udp --dport 69 -j REJECT
 #group x-2?
 #idk how to block
 
