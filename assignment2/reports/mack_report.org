@@ -1,5 +1,5 @@
 * Services and Configuration *
-
+  
 * Part 1:
 *Linux root password:*
 Qni@rjeIy4NwI6nLHmo67Wy*yDUOuY4$ynyRmFoJ%6fy3q$m%TwqOTeffo*W40vh
@@ -7,12 +7,12 @@ Qni@rjeIy4NwI6nLHmo67Wy*yDUOuY4$ynyRmFoJ%6fy3q$m%TwqOTeffo*W40vh
 In&JRDhntDg5gnTlx7RKSxA8I4!*yey60fOyG4q7uRmRJ@8qi1g4ZHyEd3jQEaXC
 *Linux professor password:*
 bzoXuICOJBcGupZjKcySdp74pxO6Npyfv5XTQQv9x3pq7Yr75
-*Windows Admin password:*
+*Windows Student password:*
 #Are there other windows account passwords, and is windows admin the same as Linux?
-*Windows Account1 password:*
-
-*Windows Account2 password:*
-
+*Windows Alice password:*
+$6zv7yMX4!O55j$z@Yy1h2614o37AaE7r1wY9eH6M102X7184pm!qnzJFB2f06oM
+*Windows Bob password:*
+UgG822a2y5f9K7i2sIGlPNa118*99qWqFY0!3^GTnPprWTq0dA^13e9kH5A0E901
 *NOTE:* please contact us if you use lastpass, and we can share the passwords
 with you to make life a little easier (because these are truly sadistic
 passwords) without the use of a password manager
@@ -51,7 +51,14 @@ passwords) without the use of a password manager
   secure password to prevent unauthorized access to the server(s)
 ** Compare and contrast how the authentication in the web server works, ftp server, and in the tftp server
 *** Web Server:
-
+  - Authentication in the Apache web server uses mod_auth_sspi, which is middleware
+  to use Microsoft's NTLM stack for authentication in the Window's encvironment/
+  + *NTLM:* uses a challenege response scheme for authentication
+    1. The client negotiates a connection to the server
+    2. The server responds with a challenge to identify the client
+    3. The client responds to the challenge with an authentication message, which
+       is most likely an encrypted or hashed version of a username and password.
+    4. The server responds indicating a success or failure.
 *** Ftp Server:
 - Implimented by VSFTPD, which supports virtual users with PAM (pluggable
   authentication modules)
@@ -89,9 +96,12 @@ passwords) without the use of a password manager
 - FTP and TFTP both do not allow remote code execution in the form of shell access
 - FTP does allow the user to navigate directories within the space they are
   permitted to access 
+- Web Server relies on using third party middleware, to take advantage of the 
+  host's built in authentication scheme.
 
 * Resources:
 https://help.ubuntu.com/community/vsftpd
 http://docs.slackware.com/
 http://www.m0rd0r.eu/slackware-as-basic-tftp-server/
 https://en.wikipedia.org/wiki/Linux_PAM
+https://en.wikipedia.org/wiki/NT_LAN_Manager
