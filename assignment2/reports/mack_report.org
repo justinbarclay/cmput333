@@ -100,7 +100,62 @@ passwords) without the use of a password manager
   host's built in authentication scheme.
 
 * Part 3
+TCP and UDP are the most commonly used protocals on the internet. TCP and UDP perform the same task of sending packets. However the main difference is that TCP guarantees thay all packets will reach the destination in the correct order, while UDP does not. TCP is basically the same as UDP except for the fact that it does an extra check, so that's why we think the rules between the two are compatible
+** IP Table rules:
+#Delete all default and existing rules
+iptables --flush
 
+#Refuse all inboud traffic default
+iptables -P INPUT DROP
+
+#Allow all incoming SSH traffic on default ssh port 22
+iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT #might not need
+
+#Allow outside users to ping servers
+iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT #might not need
+
+#Allow 10.229.*.* to access ftp, default port 20
+iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 20 -j ACCEPT #maybe should
+use port 21  
+#Block 10.229.100.96
+iptables -A INPUT -s 10.229.100.96 -p tcp --dport 20 -j REJECT
+#Block 10.229.96.*
+iptables -A INPUT -s 10.229.96.0/24 -p tcp --dport 20 -j REJECT
+#block group 8 (x+1)
+iptables -A INPUT -s 10.229.8.0 -p tcp --dport 20 -j REJECT
+
+#outbound
+iptables -A OUTPUT -s 10.229.100.96 -p tcp --dport 20 -j REJECT
+iptables -A OUTPUT -s 10.229.96.0/24 -p tcp --dport 20 -j REJECT
+iptables -A OUTPUT -s 10.229.8.0 -p tcp --dport 20 -j REJECT
+
+#Allow 10.229.*.* to access http on ports 80, 8080
+iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 80, 8080 -j ACCEPT
+#Block 10.229.100.97
+iptables -A INPUT -s 10.229.100.97 -p tcp --dport 80, 8080 -j REJECT
+#Block 10.229.97.*
+iptables -A INPUT -s 10.229.97.0/24 -p tcp --dport 80, 8080 -j REJECT
+#Block group 6 (x-1)
+iptables -A INPUT -s 10.229.6.0 -p tcp --dport 80, 8080 -j REJECT
+
+#Allow 10.229.*.* to access tftp, default port 69
+iptables -A INPUT -s 10.229.0.0/16 -p udp --dport 69 -j ACCEPT
+#Block 10,229.100.96
+iptables -A INPUT -s 10.229.100.96 -p udp --dport 69 -j REJECT
+#Block 10.229.96.*
+iptables -A INPUT -s 10.229.96.0/24 -p udp --dport 69 -j REJECT
+#block group 9(x+2)
+iptables -A INPUT -s 10.229.9.0 -p udp --dport 69 -j REJECT
+
+#logging, may have to be slightly changed, following this
+http://stackoverflow.com/questions/21771684/iptables-log-and-drop-in-one-
+rule
+iptables -N LOGGING
+iptables -A INPUT -j LOGGING
+iptables -A OUTPUT -j LOGGING
+iptables -A LOGGING -m limit --limit 2/min -j LOG --log-prefix "IPTables-Dropped"
 * Delegation of duties
 - All group members collaborated on all portions of the assignment, however
   each member assumed a leadership role/responsibiltiy for the completion of
