@@ -99,6 +99,37 @@ passwords) without the use of a password manager
 - Web Server relies on using third party middleware, to take advantage of the 
   host's built in authentication scheme.
 
+* Part 3
+
+* Delegation of duties
+- All group members collaborated on all portions of the assignment, however
+  each member assumed a leadership role/responsibiltiy for the completion of
+  one portion of the assignment
+- Justin was in charge of setting up the web server on the Windows machine,
+  and had a secondary role configuring ip tables, as well as configuring the
+  Linux machine to support ip tables
+- Vuk was in charge of cracking the passwords for the Assignment 1 sliding
+  portion, as well as configuring ip tables
+- Mackenzie was in charge of setting up the FTP and TFTP servers on the linux
+  machine, as well as configuring NAT, and port forwarding for the web server
+
+* Difficulties Encountered
+- Testing the iptables to ensure proper function was difficult to manage
+    + In the future, it would be good to have a lab day dedicated to testing
+    to make it easy to collaborate with other groups to test eachother's
+    setups
+- Setting up the Slackware provided TFTP server proved to be impossible, and
+  the OpenTFTP server had to be installed instead. This also proved somewhat
+  difficult but not insurmountable
+    + In the future, specifically say not to setup the Slackware TFTP server,
+    but others did not have the same trouble that Mackenzie did, so perhaps
+    he is just not very smart 
+- Assignment forced us to learn more about linux permissions, and how
+  firewalls work
+- The assignment took a reasonable amount of effort, but less so than
+  Assignment 1 
+- The workload was reasonable
+
 * Resources:
 https://help.ubuntu.com/community/vsftpd
 http://docs.slackware.com/
