@@ -1,3 +1,6 @@
+#Delete all default and existing rules
+iptables --flush
+
 #Refuse all inboud traffic default
 iptables -P INPUT DROP
 
@@ -18,14 +21,19 @@ iptables -A INPUT -s 10.229.96.0/24 -p tcp --dport 20 -j REJECT
 #block group 8 (x+1)
 iptables -A INPUT -s 10.229.100.8 -p tcp --dport 20 -j REJECT
 
+#outbound
+iptables -A OUTPUT -s 10.229.100.96 -p tcp --dport 20 -j REJECT
+iptables -A OUTPUT -s 10.229.96.0/24 -p tcp --dport 20 -j REJECT
+iptables -A OUTPUT -s 10.229.100.8 -p tcp --dport 20 -j REJECT
+
 #Allow 10.229.*.* to access http on ports 80, 8080
 iptables -A INPUT -s 10.229.0.0/16 -p tcp --dport 80, 8080 -j ACCEPT
 #Block 10.229.100.97
-iptables -A INPUT -s 10.229.100.97 -p tcp --dport 80 -j REJECT
+iptables -A INPUT -s 10.229.100.97 -p tcp --dport 80, 8080 -j REJECT
 #Block 10.229.97.*
-iptables -A INPUT -s 10.229.97.0/24 -p tcp --dport 80 -j REJECT
+iptables -A INPUT -s 10.229.97.0/24 -p tcp --dport 80, 8080 -j REJECT
 #Block group 6 (x-1)
-iptables -A INPUT -s 10.229.100.6 -p tcp --dport 80 -j REJECT
+iptables -A INPUT -s 10.229.100.6 -p tcp --dport 80, 8080 -j REJECT
 
 #Allow 10.229.*.* to access tftp, default port 69
 iptables -A INPUT -s 10.229.0.0/16 -p udp --dport 69 -j ACCEPT
@@ -39,4 +47,5 @@ iptables -A INPUT -s 10.229.100.9 -p udp --dport 69 -j REJECT
 #logging
 iptables -N LOGGING
 iptables -A INPUT -j LOGGING
+iptables -A OUTPUT -j LOGGING
 iptables -A LOGGING -m limit --limit 2/min -j LOG --log-prefix "IPTables-Dropped"
