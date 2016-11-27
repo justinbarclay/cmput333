@@ -1,0 +1,224 @@
+% Created 2016-11-04 Fri 11:40
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Justin Barclay}
+\date{\today}
+\title{mack\_report}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Services and Configuration *}
+\label{sec-1}
+
+\section{Part 1:}
+\label{sec-2}
+\textbf{Linux root password:}
+Qni@rjeIy4NwI6nLHmo67Wy*yDUOuY4\$ynyRmFoJ\%6fy3q\$m\%TwqOTeffo*W40vh
+\textbf{Linux student password:}
+In\&JRDhntDg5gnTlx7RKSxA8I4!*yey60fOyG4q7uRmRJ@8qi1g4ZHyEd3jQEaXC
+\textbf{Linux professor password:}
+bzoXuICOJBcGupZjKcySdp74pxO6Npyfv5XTQQv9x3pq7Yr75
+\textbf{Windows Student password:}
+\#Are there other windows account passwords, and is windows admin the same as Linux?
+\textbf{Windows Alice password:}
+\$6zv7yMX4!O55j\$z@Yy1h2614o37AaE7r1wY9eH6M102X7184pm!qnzJFB2f06oM
+\textbf{Windows Bob password:}
+UgG822a2y5f9K7i2sIGlPNa118*99qWqFY0!3$^{\text{GTnPprWTq0dA}}$$^{\text{13e9kH5A0E901}}$
+\textbf{NOTE:} please contact us if you use lastpass, and we can share the passwords
+with you to make life a little easier (because these are truly sadistic
+passwords) without the use of a password manager
+\subsection{Reasoning:}
+\label{sec-2-1}
+\begin{itemize}
+\item Passwords are randomly generated using LastPass (very reputable password
+service) to prevent dictionary/rainbow attacks and ensure integrity of random
+generation
+\item We wanted to ensure that it was impossible to brute force a password
+\begin{itemize}
+\item It takes 16.69 million trillion trillion trillion trillion trillion
+\end{itemize}
+trillion trillion centuries to exhaustively search this password space
+(Assuming one hundred trillion guesses per second)
+\item The ease of use, and proven security benefits of using a password manager
+and randomly generated passwords makes the use of user created passwords
+inexcuseable
+\item If we were implimenting this assignment in the real world, these ports
+would be open to online brute force/dictionary/rainbow attacks (excepting the use
+of something like Fail2Ban), so it is a neccessity to have an extremely
+secure password to prevent unauthorized access to the server(s)
+\end{itemize}
+
+\section{Part 2}
+\label{sec-3}
+\subsection{How did you select the passwords for the user accounts on Linux and Windows}
+\label{sec-3-1}
+\begin{itemize}
+\item Passwords are randomly generated using LastPass (very reputable password
+service) to prevent dictionary/rainbow attacks and ensure integrity of random
+generation
+\item We wanted to ensure that it was impossible to brute force a password
+\begin{itemize}
+\item It takes 16.69 million trillion trillion trillion trillion trillion
+\end{itemize}
+trillion trillion centuries to exhaustively search this password space
+(Assuming one hundred trillion guesses per second)
+\item The ease of use, and proven security benefits of using a password manager
+and randomly generated passwords makes the use of user created passwords
+inexcuseable, as compromising a user account can give an attacker a
+foothold to gain higher access privileges on the server
+\item If we were implimenting this assignment in the real world, these ports
+would be open to online brute force/dictionary/rainbow attacks (excepting the use
+of something like Fail2Ban), so it is a neccessity to have an extremely
+secure password to prevent unauthorized access to the server(s)
+\end{itemize}
+\subsection{Compare and contrast how the authentication in the web server works, ftp server, and in the tftp server}
+\label{sec-3-2}
+\subsubsection{Web Server:}
+\label{sec-3-2-1}
+\begin{itemize}
+\item Authentication in the Apache web server uses mod$_{\text{auth}}$$_{\text{sspi}}$, which is middleware
+\end{itemize}
+to use Microsoft's NTLM stack for authentication in the Window's encvironment/
+\begin{itemize}
+\item \textbf{NTLM:} uses a challenege response scheme for authentication
+\begin{enumerate}
+\item The client negotiates a connection to the server
+\item The server responds with a challenge to identify the client
+\item The client responds to the challenge with an authentication message, which
+is most likely an encrypted or hashed version of a username and password.
+\item The server responds indicating a success or failure.
+\end{enumerate}
+\end{itemize}
+\subsubsection{Ftp Server:}
+\label{sec-3-2-2}
+\begin{itemize}
+\item Implimented by VSFTPD, which supports virtual users with PAM (pluggable
+authentication modules)
+\begin{itemize}
+\item \textbf{Linux PAM:} separates the tasks of authentication into four independent
+management groups
+\begin{enumerate}
+\item \uline{Account modules} check that the specified account is a valid
+\end{enumerate}
+authentication target under current conditions. (may include
+conditions like account expiration, time of day, and that the user
+has access to the requested service)
+\begin{enumerate}
+\item \uline{Authentication modules} verify the user's identity, for example
+\end{enumerate}
+by requesting and checking a, in this case, password.
+\begin{enumerate}
+\item \uline{Password modules} are responsible for updating passwords, and are
+\end{enumerate}
+generally coupled to modules in the authentication step. may also be used 
+to enforce strong passwords
+\begin{enumerate}
+\item \uline{Session modules} define actions that are performed at the
+\end{enumerate}
+beginning and end of sessions. A session starts after a user has
+authenticated
+\item A virtual user is a user login which does not exist as a real login on the
+\end{itemize}
+system in /etc/passwd and /etc/shadow file. Virtual users can therefore be
+more secure than real users, because a compromised account can only use the
+FTP server but cannot login to system to use other services such as SSH or
+SMTP)
+\end{itemize}
+\subsubsection{Tftp Server:}
+\label{sec-3-2-3}
+\begin{itemize}
+\item OpenTFTP server (and TFTP in general)includes no login or access control mechanisms, and thereby provides
+no authentication of users. 
+\begin{itemize}
+\item It is accessible by
+\end{itemize}
+any anonymous user. It does not provide the ability to manipulate what
+directory the user has access to, so upon setting up a tftp connection,
+the user only has accesss to the contents of the specified directory
+\end{itemize}
+\subsubsection{Compare \& Contrast:}
+\label{sec-3-2-4}
+\begin{itemize}
+\item FTP provides the ability to authenticate, and control what users can access
+the server contents, whereas the TFTP server only allows control of what
+directory a user has access to
+\item FTP and TFTP both provide control of what directories a user is able to access
+\item FTP and TFTP both do not allow remote code execution in the form of shell access
+\item FTP does allow the user to navigate directories within the space they are
+permitted to access
+\item Web Server relies on using third party middleware, to take advantage of the 
+host's built in authentication scheme.
+\end{itemize}
+
+\section{Part 3}
+\label{sec-4}
+
+\section{Delegation of duties}
+\label{sec-5}
+\begin{itemize}
+\item All group members collaborated on all portions of the assignment, however
+each member assumed a leadership role/responsibiltiy for the completion of
+one portion of the assignment
+\item Justin was in charge of setting up the web server on the Windows machine,
+and had a secondary role configuring ip tables, as well as configuring the
+Linux machine to support ip tables
+\item Vuk was in charge of cracking the passwords for the Assignment 1 sliding
+portion, as well as configuring ip tables
+\item Mackenzie was in charge of setting up the FTP and TFTP servers on the linux
+machine, as well as configuring NAT, and port forwarding for the web server
+\end{itemize}
+
+\section{Difficulties Encountered}
+\label{sec-6}
+\begin{itemize}
+\item Testing the iptables to ensure proper function was difficult to manage
+\begin{itemize}
+\item In the future, it would be good to have a lab day dedicated to testing
+\end{itemize}
+to make it easy to collaborate with other groups to test eachother's
+setups
+\item Setting up the Slackware provided TFTP server proved to be impossible, and
+the OpenTFTP server had to be installed instead. This also proved somewhat
+difficult but not insurmountable
+\begin{itemize}
+\item In the future, specifically say not to setup the Slackware TFTP server,
+\end{itemize}
+but others did not have the same trouble that Mackenzie did, so perhaps
+he is just not very smart
+\item Assignment forced us to learn more about linux permissions, and how
+firewalls work
+\item The assignment took a reasonable amount of effort, but less so than
+Assignment 1
+\item The workload was reasonable
+\end{itemize}
+
+\section{Resources:}
+\label{sec-7}
+\url{https://help.ubuntu.com/community/vsftpd}
+\url{http://docs.slackware.com/}
+\url{http://www.m0rd0r.eu/slackware-as-basic-tftp-server/}
+\url{https://en.wikipedia.org/wiki/Linux_PAM}
+\url{https://en.wikipedia.org/wiki/NT_LAN_Manager}
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}
