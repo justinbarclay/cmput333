@@ -1,23 +1,50 @@
 * Arp Poisoning
 ** Step 1
 *** a.) IP Addresses
-Host 1: 10.229.7.2
-    MAC: 00:50:56:96:28:C4
-Host 2: 10.229.7.253
+*Host 10.229.100.102*
+*Host 10.229.100.55*
+
 
 *** b.) Services running
-*Host 1:* 
-+ ssh           (protocol 2.0)
-+ ssl/http      Apache httpd 2.0.65 ((Win32) mod_ssl/2.0.65 OpenSSL/0.9.8y mod_auth_sspi/1.0.4)
-+ microsoft-rdp Microsoft Terminal Service
-+ vnc           VNC (protocol 3.3)
-+ http          Apache httpd 2.0.65 ((Win32) mod_ssl/2.0.65 OpenSSL/0.9.8y mod_auth_sspi/1.0.4)
+*Host 10.229.100.102*
+22/tcp   open  ssh
+111/tcp  open  rpcbind
+113/tcp  open  auth
+6000/tcp open  X11
 
+*Host 10.229.100.55*
+7/tcp    open  echo
+9/tcp    open  discard
+13/tcp   open  daytime
+17/tcp   open  qotd
+19/tcp   open  chargen
+25/tcp   open  smtp
+42/tcp   open  nameserver
+53/tcp   open  domain
+80/tcp   open  http
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+515/tcp  open  printer
+548/tcp  open  afpovertcp
+1025/tcp open  NFS-or-IIS
+1029/tcp open  ms-lsa
+1032/tcp open  iad3
+1033/tcp open  netinfo
+3372/tcp open  msdtc
+3389/tcp open  ms-term-serv
+6142/tcp open  aspentec-lm
 
 *** c.) Operating systems
-*Host 1:* IBM AIX 4.3.2.0-4.3.3.0 on an IBM RS/*, Microsoft Windows 2003 Server
-or XP SP2, Microsoft Windows XP SP2
+*Host 10.229.100.102*
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
 
+*Host 10.229.100.55*
+Running: Microsoft Windows 95/98/ME|NT/2K/XP
 * Questions
 You must also explain what features probed for by the tool were crucial to
 identifying it as the particular OS.
+
+Device type: general purpose
+
