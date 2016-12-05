@@ -72,8 +72,9 @@ running, as the linux kernel is fairly generic to all Linux distros.
 - Host 3: 10.229.100.101
 - Host 2: 10.229.100.102
 *** b.) Nature of connections
-- Host 1: 10.229.100.55 → HTTP server
-- Host 2: 10.229.100.102
+- Host 1: 10.229.100.55 → TCP connections
+- Host 2: 10.229.100.101 → TCP connections
+- Host 3: 10.229.100.102 → TCP connections
 *** c.) Services to which the connections are established
 - Connections are established using an HTTP get request
 *** d.) Nature and contents of captured transfer
