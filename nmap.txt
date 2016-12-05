@@ -1,0 +1,573 @@
+
+Starting Nmap 4.11 ( http://www.insecure.org/nmap/ ) at 2016-12-02 02:06 MST
+Initiating ARP Ping Scan against 7 hosts [1 port/host] at 02:06
+The ARP Ping Scan took 0.21s to scan 7 total hosts.
+DNS resolution of 6 IPs took 13.00s.
+Initiating SYN Stealth Scan against 5 hosts [1680 ports/host] at 02:07
+Discovered open port 21/tcp on 10.229.100.1
+Discovered open port 21/tcp on 10.229.100.2
+Discovered open port 21/tcp on 10.229.100.3
+Discovered open port 21/tcp on 10.229.100.4
+Discovered open port 21/tcp on 10.229.100.5
+Discovered open port 113/tcp on 10.229.100.1
+Discovered open port 113/tcp on 10.229.100.4
+Discovered open port 113/tcp on 10.229.100.5
+Discovered open port 6000/tcp on 10.229.100.4
+Discovered open port 6000/tcp on 10.229.100.5
+Discovered open port 111/tcp on 10.229.100.4
+Discovered open port 111/tcp on 10.229.100.5
+Completed SYN Stealth Scan against 10.229.100.4 in 0.86s (4 hosts left)
+Completed SYN Stealth Scan against 10.229.100.5 in 0.86s (3 hosts left)
+Discovered open port 6000/tcp on 10.229.100.1
+Discovered open port 111/tcp on 10.229.100.1
+Completed SYN Stealth Scan against 10.229.100.1 in 1.57s (2 hosts left)
+Increasing send delay for 10.229.100.2 from 0 to 5 due to max_successful_tryno increase to 4
+Increasing send delay for 10.229.100.2 from 5 to 10 due to max_successful_tryno increase to 5
+Increasing send delay for 10.229.100.3 from 0 to 5 due to max_successful_tryno increase to 4
+Increasing send delay for 10.229.100.3 from 5 to 10 due to max_successful_tryno increase to 5
+Increasing send delay for 10.229.100.2 from 10 to 20 due to max_successful_tryno increase to 6
+Increasing send delay for 10.229.100.3 from 10 to 20 due to max_successful_tryno increase to 6
+Increasing send delay for 10.229.100.2 from 20 to 40 due to max_successful_tryno increase to 7
+Increasing send delay for 10.229.100.3 from 20 to 40 due to max_successful_tryno increase to 7
+Increasing send delay for 10.229.100.2 from 40 to 80 due to max_successful_tryno increase to 8
+Increasing send delay for 10.229.100.3 from 40 to 80 due to max_successful_tryno increase to 8
+Increasing send delay for 10.229.100.2 from 80 to 160 due to max_successful_tryno increase to 9
+Increasing send delay for 10.229.100.3 from 80 to 160 due to max_successful_tryno increase to 9
+Increasing send delay for 10.229.100.2 from 160 to 320 due to 11 out of 11 dropped probes since last increase.
+Increasing send delay for 10.229.100.3 from 160 to 320 due to 11 out of 14 dropped probes since last increase.
+Increasing send delay for 10.229.100.2 from 320 to 640 due to 11 out of 11 dropped probes since last increase.
+Increasing send delay for 10.229.100.3 from 320 to 640 due to 11 out of 11 dropped probes since last increase.
+SYN Stealth Scan Timing: About 62.01% done; ETC: 02:08 (0:00:30 remaining)
+Increasing send delay for 10.229.100.3 from 640 to 1000 due to 11 out of 19 dropped probes since last increase.
+SYN Stealth Scan Timing: About 62.93% done; ETC: 02:09 (0:00:46 remaining)
+SYN Stealth Scan Timing: About 64.40% done; ETC: 02:10 (0:01:10 remaining)
+SYN Stealth Scan Timing: About 66.54% done; ETC: 02:12 (0:01:40 remaining)
+SYN Stealth Scan Timing: About 69.65% done; ETC: 02:14 (0:02:11 remaining)
+SYN Stealth Scan Timing: About 73.68% done; ETC: 02:16 (0:02:35 remaining)
+Discovered open port 6000/tcp on 10.229.100.2
+SYN Stealth Scan Timing: About 78.43% done; ETC: 02:19 (0:02:42 remaining)
+SYN Stealth Scan Timing: About 83.43% done; ETC: 02:22 (0:02:30 remaining)
+SYN Stealth Scan Timing: About 87.94% done; ETC: 02:24 (0:02:04 remaining)
+SYN Stealth Scan Timing: About 91.79% done; ETC: 02:25 (0:01:32 remaining)
+Completed SYN Stealth Scan against 10.229.100.2 in 1083.86s (1 host left)
+SYN Stealth Scan Timing: About 93.63% done; ETC: 02:27 (0:01:16 remaining)
+SYN Stealth Scan Timing: About 94.55% done; ETC: 02:28 (0:01:09 remaining)
+SYN Stealth Scan Timing: About 95.41% done; ETC: 02:29 (0:01:01 remaining)
+SYN Stealth Scan Timing: About 96.16% done; ETC: 02:30 (0:00:53 remaining)
+SYN Stealth Scan Timing: About 96.80% done; ETC: 02:31 (0:00:46 remaining)
+SYN Stealth Scan Timing: About 97.38% done; ETC: 02:31 (0:00:38 remaining)
+SYN Stealth Scan Timing: About 97.84% done; ETC: 02:32 (0:00:32 remaining)
+The SYN Stealth Scan took 1677.16s to scan 8400 total ports.
+Initiating service scan against 15 services on 5 hosts at 02:34
+The service scan took 9.00s to scan 15 services on 5 hosts.
+Initiating RPCGrind Scan against 10.229.100.1 at 02:35
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.1.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.1 appears to be up ... good.
+Interesting ports on 10.229.100.1:
+Not shown: 1675 closed ports
+PORT     STATE    SERVICE VERSION
+21/tcp   open     ftp     vsftpd 2.0.5
+80/tcp   filtered http
+111/tcp  open     rpcbind  2 (rpc #100000)
+113/tcp  open     ident   OpenBSD identd
+6000/tcp open     X11      (access denied)
+MAC Address: 00:50:56:96:28:CD (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=2423301 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, OpenBSD
+
+For OSScan assuming port 21 is open, 22 is closed, and neither are firewalled
+Host 10.229.100.2 appears to be up ... good.
+Interesting ports on 10.229.100.2:
+Not shown: 1021 filtered ports, 657 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:CF (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=1883975 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OS: Unix
+
+For OSScan assuming port 21 is open, 22 is closed, and neither are firewalled
+Host 10.229.100.3 appears to be up ... good.
+Interesting ports on 10.229.100.3:
+Not shown: 1677 filtered ports
+PORT     STATE  SERVICE    VERSION
+21/tcp   open   ftp        vsftpd 2.0.5
+22/tcp   closed ssh
+8080/tcp closed http-proxy
+MAC Address: 00:50:56:96:28:D1 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X
+OS details: Linux 2.4.6 - 2.4.26 or 2.6.9
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=2076786 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OS: Unix
+
+Initiating RPCGrind Scan against 10.229.100.4 at 02:35
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.4.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.4 appears to be up ... good.
+Interesting ports on 10.229.100.4:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:D3 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=2893372 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, OpenBSD
+
+Initiating RPCGrind Scan against 10.229.100.5 at 02:35
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.5.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.5 appears to be up ... good.
+Interesting ports on 10.229.100.5:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:D5 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=4081436 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, OpenBSD
+
+DNS resolution of 1 IPs took 13.00s.
+Initiating SYN Stealth Scan against 10.229.100.6 [1680 ports] at 02:35
+Discovered open port 113/tcp on 10.229.100.6
+Discovered open port 6000/tcp on 10.229.100.6
+Discovered open port 111/tcp on 10.229.100.6
+The SYN Stealth Scan took 1.42s to scan 1680 total ports.
+Initiating service scan against 3 services on 10.229.100.6 at 02:35
+The service scan took 6.01s to scan 3 services on 1 host.
+Initiating RPCGrind Scan against 10.229.100.6 at 02:35
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.6.
+For OSScan assuming port 111 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.6 appears to be up ... good.
+Interesting ports on 10.229.100.6:
+Not shown: 1677 closed ports
+PORT     STATE SERVICE VERSION
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:D7 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=3702802 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: OpenBSD, Unix
+
+Initiating ARP Ping Scan against 248 hosts [1 port/host] at 02:35
+The ARP Ping Scan took 2.52s to scan 248 total hosts.
+DNS resolution of 12 IPs took 26.00s.
+Initiating SYN Stealth Scan against 10.229.100.7 [1680 ports] at 02:36
+Discovered open port 113/tcp on 10.229.100.7
+Discovered open port 6000/tcp on 10.229.100.7
+Discovered open port 111/tcp on 10.229.100.7
+The SYN Stealth Scan took 0.05s to scan 1680 total ports.
+Initiating service scan against 3 services on 10.229.100.7 at 02:36
+The service scan took 6.01s to scan 3 services on 1 host.
+Initiating RPCGrind Scan against 10.229.100.7 at 02:36
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.7.
+For OSScan assuming port 111 is open, 1 is closed, and neither are firewalled
+For OSScan assuming port 111 is open, 1 is closed, and neither are firewalled
+For OSScan assuming port 111 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.7 appears to be up ... good.
+Interesting ports on 10.229.100.7:
+Not shown: 1677 closed ports
+PORT     STATE SERVICE VERSION
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+No exact OS matches for host (If you know what OS is running on it, see http://www.insecure.org/cgi-bin/nmap-submit.cgi).
+TCP/IP fingerprint:
+SInfo(V=4.11%P=i486-slackware-linux-gnu%D=12/2%Tm=58414098%O=111%C=1)
+TSeq(Class=RI%gcd=1%SI=331508%IPID=Z)
+TSeq(Class=RI%gcd=1%SI=3314FE%IPID=Z)
+TSeq(Class=RI%gcd=1%SI=3314FD%IPID=Z)
+T1(Resp=Y%DF=Y%W=8000%ACK=S++%Flags=AS%Ops=MNNTNW)
+T2(Resp=N)
+T3(Resp=Y%DF=Y%W=8000%ACK=S++%Flags=AS%Ops=MNNTNW)
+T4(Resp=Y%DF=Y%W=0%ACK=O%Flags=R%Ops=)
+T5(Resp=Y%DF=Y%W=0%ACK=S++%Flags=AR%Ops=)
+T6(Resp=Y%DF=Y%W=0%ACK=O%Flags=R%Ops=)
+T7(Resp=Y%DF=Y%W=0%ACK=S++%Flags=AR%Ops=)
+PU(Resp=Y%DF=N%TOS=C0%IPLEN=164%RIPTL=148%RID=E%RIPCK=E%UCK=E%ULEN=134%DAT=E)
+
+
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=3347709 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: OpenBSD, Unix
+
+Initiating SYN Stealth Scan against 12 hosts [1680 ports/host] at 02:36
+Discovered open port 53/tcp on 10.229.100.55
+Discovered open port 21/tcp on 10.229.100.8
+Discovered open port 21/tcp on 10.229.100.9
+Discovered open port 21/tcp on 10.229.100.10
+Discovered open port 21/tcp on 10.229.100.12
+Discovered open port 21/tcp on 10.229.100.13
+Discovered open port 21/tcp on 10.229.100.96
+Discovered open port 80/tcp on 10.229.100.55
+Discovered open port 80/tcp on 10.229.100.96
+Discovered open port 80/tcp on 10.229.100.97
+Discovered open port 113/tcp on 10.229.100.9
+Discovered open port 113/tcp on 10.229.100.10
+Discovered open port 113/tcp on 10.229.100.11
+Discovered open port 113/tcp on 10.229.100.12
+Discovered open port 113/tcp on 10.229.100.13
+Discovered open port 113/tcp on 10.229.100.95
+Discovered open port 113/tcp on 10.229.100.96
+Discovered open port 113/tcp on 10.229.100.97
+Discovered open port 113/tcp on 10.229.100.101
+Discovered open port 113/tcp on 10.229.100.102
+Discovered open port 3389/tcp on 10.229.100.55
+Discovered open port 25/tcp on 10.229.100.55
+Discovered open port 22/tcp on 10.229.100.101
+Discovered open port 22/tcp on 10.229.100.102
+Discovered open port 23/tcp on 10.229.100.96
+Discovered open port 1033/tcp on 10.229.100.55
+Discovered open port 1025/tcp on 10.229.100.55
+Discovered open port 19/tcp on 10.229.100.55
+Discovered open port 6142/tcp on 10.229.100.55
+Discovered open port 17/tcp on 10.229.100.55
+Discovered open port 1029/tcp on 10.229.100.55
+Discovered open port 6000/tcp on 10.229.100.9
+Discovered open port 6000/tcp on 10.229.100.10
+Discovered open port 6000/tcp on 10.229.100.11
+Discovered open port 6000/tcp on 10.229.100.12
+Discovered open port 6000/tcp on 10.229.100.13
+Discovered open port 6000/tcp on 10.229.100.95
+Discovered open port 6000/tcp on 10.229.100.96
+Discovered open port 6000/tcp on 10.229.100.97
+Discovered open port 6000/tcp on 10.229.100.101
+Discovered open port 6000/tcp on 10.229.100.102
+Discovered open port 445/tcp on 10.229.100.55
+Discovered open port 13/tcp on 10.229.100.55
+Discovered open port 9/tcp on 10.229.100.55
+Discovered open port 515/tcp on 10.229.100.55
+Discovered open port 111/tcp on 10.229.100.9
+Discovered open port 111/tcp on 10.229.100.10
+Discovered open port 111/tcp on 10.229.100.11
+Discovered open port 111/tcp on 10.229.100.12
+Discovered open port 111/tcp on 10.229.100.13
+Discovered open port 111/tcp on 10.229.100.95
+Discovered open port 111/tcp on 10.229.100.96
+Discovered open port 111/tcp on 10.229.100.97
+Discovered open port 111/tcp on 10.229.100.101
+Discovered open port 111/tcp on 10.229.100.102
+Discovered open port 548/tcp on 10.229.100.55
+Discovered open port 42/tcp on 10.229.100.55
+Discovered open port 7/tcp on 10.229.100.55
+Discovered open port 3372/tcp on 10.229.100.55
+Discovered open port 139/tcp on 10.229.100.55
+Discovered open port 135/tcp on 10.229.100.55
+Discovered open port 1032/tcp on 10.229.100.55
+Completed SYN Stealth Scan against 10.229.100.9 in 4.86s (11 hosts left)
+Completed SYN Stealth Scan against 10.229.100.10 in 4.86s (10 hosts left)
+Completed SYN Stealth Scan against 10.229.100.11 in 4.86s (9 hosts left)
+Completed SYN Stealth Scan against 10.229.100.12 in 4.86s (8 hosts left)
+Completed SYN Stealth Scan against 10.229.100.13 in 4.86s (7 hosts left)
+Completed SYN Stealth Scan against 10.229.100.55 in 4.86s (6 hosts left)
+Completed SYN Stealth Scan against 10.229.100.95 in 4.86s (5 hosts left)
+Completed SYN Stealth Scan against 10.229.100.96 in 4.86s (4 hosts left)
+Completed SYN Stealth Scan against 10.229.100.97 in 4.86s (3 hosts left)
+Completed SYN Stealth Scan against 10.229.100.101 in 4.86s (2 hosts left)
+Completed SYN Stealth Scan against 10.229.100.102 in 4.86s (1 host left)
+The SYN Stealth Scan took 22.05s to scan 20160 total ports.
+Initiating service scan against 62 services on 12 hosts at 02:36
+The service scan took 119.52s to scan 62 services on 12 hosts.
+For OSScan assuming port 21 is open, 22 is closed, and neither are firewalled
+Host 10.229.100.8 appears to be up ... good.
+Interesting ports on 10.229.100.8:
+Not shown: 1678 filtered ports
+PORT   STATE  SERVICE VERSION
+21/tcp open   ftp     vsftpd 2.0.5
+22/tcp closed ssh
+MAC Address: 00:50:56:96:28:DB (VMWare)
+Device type: general purpose|broadband router
+Running: Linux 2.4.X|2.5.X|2.6.X, D-Link embedded
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.18 - 2.4.20, Linux 2.4.26, Linux 2.4.27 or D-Link DSL-500T (running linux 2.4), Linux 2.4.7 - 2.6.11, Linux 2.6.0 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=4444841 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OS: Unix
+
+Initiating RPCGrind Scan against 10.229.100.9 at 02:38
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.9.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.9 appears to be up ... good.
+Interesting ports on 10.229.100.9:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:DD (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=2604738 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, OpenBSD
+
+Initiating RPCGrind Scan against 10.229.100.10 at 02:38
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.10.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.10 appears to be up ... good.
+Interesting ports on 10.229.100.10:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:DF (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=2014327 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, OpenBSD
+
+Initiating RPCGrind Scan against 10.229.100.11 at 02:38
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.11.
+For OSScan assuming port 111 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.11 appears to be up ... good.
+Interesting ports on 10.229.100.11:
+Not shown: 1677 closed ports
+PORT     STATE SERVICE VERSION
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:E1 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=4736934 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: OpenBSD, Unix
+
+Initiating RPCGrind Scan against 10.229.100.12 at 02:38
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.12.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.12 appears to be up ... good.
+Interesting ports on 10.229.100.12:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:E3 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=5666701 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, OpenBSD
+
+Initiating RPCGrind Scan against 10.229.100.13 at 02:38
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.13.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.13 appears to be up ... good.
+Interesting ports on 10.229.100.13:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+111/tcp  open  rpcbind  2 (rpc #100000)
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:E5 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=1638401 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, OpenBSD
+
+For OSScan assuming port 7 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.55 appears to be up ... good.
+Interesting ports on 10.229.100.55:
+Not shown: 1659 closed ports
+PORT     STATE SERVICE       VERSION
+7/tcp    open  echo
+9/tcp    open  discard?
+13/tcp   open  daytime?
+17/tcp   open  qotd          Windows qotd
+19/tcp   open  chargen
+25/tcp   open  smtp          Microsoft ESMTP 5.0.2172.1
+42/tcp   open  wins          Microsoft Windows Wins
+53/tcp   open  domain        Microsoft DNS
+80/tcp   open  http          Microsoft IIS webserver 5.0
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds  Microsoft Windows 2000 microsoft-ds
+515/tcp  open  printer       Microsoft lpd
+548/tcp  open  afpovertcp?
+1025/tcp open  mstask        Microsoft mstask (task server - c:\winnt\system32\Mstask.exe)
+1029/tcp open  mstask        Microsoft mstask (task server - c:\winnt\system32\Mstask.exe)
+1032/tcp open  mstask        Microsoft mstask (task server - c:\winnt\system32\Mstask.exe)
+1033/tcp open  msrpc         Microsoft Windows RPC
+3372/tcp open  msdtc?
+3389/tcp open  microsoft-rdp Microsoft Terminal Service
+6142/tcp open  http          Microsoft IIS webserver 5.0
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port13-TCP:V=4.11%I=7%D=12/2%Time=584140B4%P=i486-slackware-linux-gnu%r
+SF:(NULL,15,"9:27:47\x20AM\x2012/2/2016\n")%r(LPDString,15,"9:27:47\x20AM\
+SF:x2012/2/2016\n")%r(LDAPBindReq,15,"9:27:47\x20AM\x2012/2/2016\n")%r(LAN
+SF:Desk-RC,15,"9:27:47\x20AM\x2012/2/2016\n")%r(TerminalServer,15,"9:27:47
+SF:\x20AM\x2012/2/2016\n")%r(NCP,15,"9:27:47\x20AM\x2012/2/2016\n")%r(Note
+SF:sRPC,15,"9:27:47\x20AM\x2012/2/2016\n")%r(NessusTPv10,15,"9:27:47\x20AM
+SF:\x2012/2/2016\n")%r(WMSRequest,15,"9:27:47\x20AM\x2012/2/2016\n")%r(ora
+SF:cle-tns,15,"9:27:47\x20AM\x2012/2/2016\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port3372-TCP:V=4.11%I=7%D=12/2%Time=584140C6%P=i486-slackware-linux-gnu
+SF:%r(GetRequest,6,"\xa8\xa0\x0c\0x\x01")%r(RTSPRequest,6,"\xa8\xa0\x0c\0x
+SF:\x01")%r(HTTPOptions,6,"\xa8\xa0\x0c\0x\x01")%r(Help,6,"\xa8\xa0\x0c\0x
+SF:\x01")%r(SSLSessionReq,6,"\xa8\xa0\x0c\0x\x01")%r(FourOhFourRequest,6,"
+SF:\xa8\xa0\x0c\0x\x01")%r(LPDString,6,"\xa8\xa0\x0c\0x\x01")%r(NessusTPv1
+SF:0,6,"\xa8\xa0\x0c\0x\x01");
+MAC Address: 00:50:56:96:45:AE (VMWare)
+Device type: general purpose
+Running: Microsoft Windows 95/98/ME|NT/2K/XP
+OS details: Microsoft Windows Millennium Edition (Me), Windows 2000 Professional or Advanced Server, or Windows XP
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=3968 (Formidable)
+IPID Sequence Generation: Incremental
+Service Info: Host: win200srv-base; OS: Windows
+
+Initiating RPCGrind Scan against 10.229.100.95 at 02:38
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.95.
+For OSScan assuming port 111 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.95 appears to be up ... good.
+Interesting ports on 10.229.100.95:
+Not shown: 1677 closed ports
+PORT     STATE SERVICE VERSION
+111/tcp  open  rpc
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:02:29 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=5156181 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: OpenBSD, Unix
+
+Initiating RPCGrind Scan against 10.229.100.96 at 02:38
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.96.
+For OSScan assuming port 21 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.96 appears to be up ... good.
+Interesting ports on 10.229.100.96:
+Not shown: 1674 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 2.0.5
+23/tcp   open  telnet  Linux telnetd
+80/tcp   open  http    Apache httpd 2.2.0 ((Unix))
+111/tcp  open  rpc
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:EF (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=3121525 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: Unix, Linux, OpenBSD
+
+Initiating RPCGrind Scan against 10.229.100.97 at 02:39
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.97.
+For OSScan assuming port 80 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.97 appears to be up ... good.
+Interesting ports on 10.229.100.97:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE VERSION
+80/tcp   open  http    Apache httpd 2.2.0 ((Unix))
+111/tcp  open  rpc
+113/tcp  open  ident   OpenBSD identd
+6000/tcp open  X11      (access denied)
+MAC Address: 00:50:56:96:28:F1 (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=5404172 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: OpenBSD, Unix
+
+Initiating RPCGrind Scan against 10.229.100.101 at 02:39
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.101.
+For OSScan assuming port 22 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.101 appears to be up ... good.
+Interesting ports on 10.229.100.101:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE    VERSION
+22/tcp   open  tcpwrapped
+111/tcp  open  rpc
+113/tcp  open  ident      OpenBSD identd
+6000/tcp open  X11         (access denied)
+MAC Address: 00:50:56:96:45:AC (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=4927262 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: OpenBSD, Unix
+
+Initiating RPCGrind Scan against 10.229.100.102 at 02:39
+The RPCGrind Scan took 0.00s to scan 1 ports on 10.229.100.102.
+For OSScan assuming port 22 is open, 1 is closed, and neither are firewalled
+Host 10.229.100.102 appears to be up ... good.
+Interesting ports on 10.229.100.102:
+Not shown: 1676 closed ports
+PORT     STATE SERVICE    VERSION
+22/tcp   open  tcpwrapped
+111/tcp  open  rpc
+113/tcp  open  ident      OpenBSD identd
+6000/tcp open  X11         (access denied)
+MAC Address: 00:50:56:96:45:AA (VMWare)
+Device type: general purpose
+Running: Linux 2.4.X|2.5.X|2.6.X
+OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
+TCP Sequence Prediction: Class=random positive increments
+                         Difficulty=2431690 (Good luck!)
+IPID Sequence Generation: All zeros
+Service Info: OSs: OpenBSD, Unix
+
+Nmap finished: 256 IP addresses (19 hosts up) scanned in 1938.396 seconds
+               Raw packets sent: 34751 (1.539MB) | Rcvd: 32286 (1.551MB)
