@@ -79,13 +79,13 @@ running, as the linux kernel is fairly generic to all Linux distros.
 
 * Buffer Overflows
 ** a.)
-Captilizes the first few characters if there are non integers, and lower cases everything following. 
+Capitalizes lower case characters or lower cases capital characters up to the first 12 inputed characters. Keeps all following characters the same as they were inputted.
 
 ** b.)
 Buffer size was 28 characters, size was found by running the executable with increasing amounts of input until the exectuable seg faulted from buffer overflow. 
 
 ** c.)
-Found the address of the string "magic cookie found!" in the .rodata section. Then found the address of it used in the dissasmbled code and found its call address. Then packed the call address and concatenated it with the input string and passed that string into the program. 
+Found the address of the string "magic cookie found!" in the .rodata section. Then found the address of its call instruction in the disassembled code. Then packed the call address and concatenated it with the input string and passed that string into the program. 
 
 ** d.) 
 my $jump = 0x804822d;
@@ -98,4 +98,4 @@ We pad the input to the program with characters and then replace the overflow wi
 
 ** f.) 
 Find the address of the instruction that exits the program.
-Find where to place the address so that when magic cookie returns, it pops off the exit instructions address.
+Find where to place the address so that when magic cookie returns, it pops off the exit instructions address immediately.
