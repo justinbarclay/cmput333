@@ -2,99 +2,6 @@
 ** Step 1
 *** a.) IP Addresses
 - *Host 10.229.100.55* → WINDOWS 2000 Server
-- *Host 10.229.100.101* → Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
-- *Host 10.229.100.102* → Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
-
-*** b.) Services running
-- *Host 10.229.100.102* and *Host 10.229.100.102*
-      - 22/tcp   open  ssh
-      - 111/tcp  open  rpcbind
-      - 113/tcp  open  auth
-      - 6000/tcp open  X11
-
-- *Host 10.229.100.55*
-      - 7/tcp    open  echo
-      - 9/tcp    open  discard
-      - 13/tcp   open  daytime
-      - 17/tcp   open  qotd
-      - 19/tcp   open  chargen
-      - 25/tcp   open  smtp
-      - 42/tcp   open  nameserver
-      - 53/tcp   open  domain
-      - 80/tcp   open  http
-      - 135/tcp  open  msrpc
-      - 139/tcp  open  netbios-ssn
-      - 445/tcp  open  microsoft-ds
-      - 515/tcp  open  printer
-      - 548/tcp  open  afpovertcp
-      - 1025/tcp open  NFS-or-IIS
-      - 1029/tcp open  ms-lsa
-      - 1032/tcp open  iad3
-      - 1033/tcp open  netinfo
-      - 3372/tcp open  msdtc
-      - 3389/tcp open  ms-term-serv
-      - 6142/tcp open  aspentec-lm
-        
-*** c.) Operating systems
-*Host 10.229.100.102*
-- Running: Linux 2.4.X|2.5.X|2.6.X
-- OS details: Linux 2.4.0 - 2.5.20, Linux 2.4.7 - 2.6.11
-- OS: OpenBSD
-*Host 10.229.100.101*
-- Running: Linux 2.4.X|2.5.X|2.6.X
-*Host 10.229.100.55*
-- Running: Microsoft Windows 2000 (Based on reading a packet)
-    + Else: 95/98/ME|NT/2K/XP
-
-*** Questions
-**** Features probed for by nmap
-- TCP/IP fingerprinting
-    + Nmap OS fingerprinting works by sending up to 16 TCP, UDP, and ICMP
-    probes to known open and closed ports of the target machine. These probes
-    are specially designed to exploit various ambiguities in the standard
-    protocol RFCs. Then Nmap listens for responses. Dozens of attributes in
-    those responses are analyzed and combined to generate a fingerprint. 
-    + Basically, different operating systems reply to requests in slightly
-    different ways, and Nmap will analyze replies to it's probes to determine
-    what operating system it is looking at
-**** More difficult host to identify
-    The linux hosts (10.229.100.102 and 10.229.100.101), were much harder to identify, due to their lack
-of unique services, and the number of similar devices on the network. Additionally,
-we were unable to find any packets from .102 or .101 that contained any idenfifying
-information, which was not the case for the Windows machine (.55).
-Additionally, the Linux machines were much more difficult to identify, because
-the kernel doesn't provide any indication of what Operating system it is
-running, as the linux kernel is fairly generic to all Linux distros.
-
-** Step 2.
-*** a.) Victims
-- Host 1: 10.229.100.55
-- Host 3: 10.229.100.101
-- Host 2: 10.229.100.102
-*** b.) Nature of connections
-- Host 1: 10.229.100.55 → TCP connections
-- Host 2: 10.229.100.101 → TCP connections
-- Host 3: 10.229.100.102 → TCP connections
-*** c.) Services to which the connections are established
-- Connections are established using an HTTP get request
-*** d.) Nature and contents of captured transfer
-- File 1: See tablet.jpg
-    + Is an image of a Proto-Elamite tablet
-- File 2: See sound.mp3.mpeg
-    + Is a short audio recording discussing Numbers stations
-* Buffer Overflows
-** a.) What the program does
-
-** b.) Buffer size, and how size was discovered
-
-** c.) How you determined how to call the function that produced the desirable output
-
-** d.) Source code for exploit
-
-** e.) How the exploit works and why it is structured the way it is
-
-** f.) or g.)
- 
 - *Host 10.229.100.102* → Linux Client 
 
 *** b.) Services running
@@ -126,7 +33,7 @@ running, as the linux kernel is fairly generic to all Linux distros.
       - 3372/tcp open  msdtc
       - 3389/tcp open  ms-term-serv
       - 6142/tcp open  aspentec-lm
-        
+
 *** c.) Operating systems
 *Host 10.229.100.102*
 - Running: Linux 2.4.X|2.5.X|2.6.X
@@ -156,7 +63,7 @@ Additionally, the Linux machine was much more difficult to identify, because
 the kernel doesn't provide any indication of what Operating system it is
 running, as the linux kernel is fairly generic to all Linux distros.
 
-** Step 2.
+** Step 2.)
 *** a.) Victims
 - Host 1: 10.229.100.55
 - Host 2: 10.229.100.102
@@ -169,15 +76,26 @@ running, as the linux kernel is fairly generic to all Linux distros.
     + Is an image of a Proto-Elamite tablet
 - File 2: See sound.mp3.mpeg
     + Is a short audio recording discussing Numbers stations
+
 * Buffer Overflows
-** a.) What the program does
+** a.)
+Captilizes the first few characters if there are non integers, and lower cases everything following. 
 
-** b.) Buffer size, and how size was discovered
+** b.)
+Buffer size was 28 characters, size was found by running the executable with increasing amounts of input until the exectuable seg faulted from buffer overflow. 
 
-** c.) How you determined how to call the function that produced the desirable output
+** c.)
+Found the address of the string "magic cookie found!" in the .rodata section. Then found the address of it used in the dissasmbled code and found its call address. Then packed the call address and concatenated it with the input string and passed that string into the program. 
 
-** d.) Source code for exploit
+** d.) 
+my $jump = 0x804822d;
+my $word = "qwertyuiopasdfghjklzxcvbnmql" . pack('V', $jump);
+print $word
+perl ./exp.pl | ./weak
 
-** e.) How the exploit works and why it is structured the way it is
+** e.) 
+We pad the input to the program with characters and then replace the overflow with the address of the code function we want to jump to (which contains the "magic cookie found!").
 
-** f.) or g.)
+** f.) 
+Find the address of the instruction that exits the program.
+Find where to place the address so that when magic cookie returns, it pops off the exit instructions address.
